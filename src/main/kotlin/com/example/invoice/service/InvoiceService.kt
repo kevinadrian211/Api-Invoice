@@ -1,7 +1,9 @@
 package com.example.invoice.service
 
 import com.example.invoice.entity.Invoice
+import com.example.invoice.entity.InvoiceView
 import com.example.invoice.reporitory.InvoiceRepository
+import com.example.invoice.reporitory.InvoiceViewRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
@@ -13,9 +15,21 @@ class InvoiceService {
     @Autowired
     lateinit var invoiceRepository: InvoiceRepository
 
+    @Autowired
+    lateinit var invoiceViewRepository: InvoiceViewRepository
+
+    fun getTotal (value: Double): List<Invoice>{
+        return invoiceRepository.findTotal(value)
+    }
+
     fun list(): List<Invoice> {
         return invoiceRepository.findAll()
     }
+
+    fun listView(): List<InvoiceView> {
+        return invoiceViewRepository.findAll()
+    }
+
 
     fun save(invoice: Invoice): Invoice {
         return invoiceRepository.save(invoice)
@@ -57,4 +71,6 @@ class InvoiceService {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error deleting invoice", ex)
         }
     }
+
+
 }

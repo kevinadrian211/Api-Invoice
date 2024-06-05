@@ -19,10 +19,8 @@ class Detail(
     var subtotal: BigDecimal? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "invoice_id")
     var invoice: Invoice? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
     var product: Product? = null
 )

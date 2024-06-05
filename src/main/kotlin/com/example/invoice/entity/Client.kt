@@ -15,6 +15,6 @@ class Client {
     @Column(updatable = false)
     var id: Long? = null
     var nui: String? = null
-    var fullname: String? = null
-    var email: String? = null
+    var fullname: String? = ""
+    var email: String? = ""
  }

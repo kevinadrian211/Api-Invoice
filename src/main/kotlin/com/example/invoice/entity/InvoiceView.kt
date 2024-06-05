@@ -5,8 +5,8 @@ import java.math.BigDecimal
 import java.util.Date
 
 @Entity
-@Table(name = "invoice")
-class Invoice(
+@Table(name = "invoice_view")
+class InvoiceView(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
@@ -17,6 +17,5 @@ class Invoice(
     var createdAt: Date? = null,
     var total: Double? = null,
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    var client: Client? = null
+    var fullname: String? = null
 )

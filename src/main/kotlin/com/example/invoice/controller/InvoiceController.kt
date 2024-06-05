@@ -1,6 +1,7 @@
 package com.example.invoice.controller
 
 import com.example.invoice.entity.Invoice
+import com.example.invoice.entity.InvoiceView
 import com.example.invoice.service.InvoiceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -19,6 +20,12 @@ class InvoiceController {
     fun list(): List<Invoice> {
         return invoiceService.list()
     }
+
+    @GetMapping("/with-client")
+    fun listView (): List<InvoiceView>{
+        return invoiceService.listView()
+    }
+
 
     @PostMapping
     fun save(@RequestBody invoice: Invoice): Invoice {
@@ -39,5 +46,10 @@ class InvoiceController {
     fun delete(@PathVariable id: Long): ResponseEntity<String> {
         invoiceService.delete(id)
         return ResponseEntity.ok("Invoice deleted successfully")
+    }
+
+    @GetMapping("/{value}/get-total")
+    fun getTotal(@PathVariable value: Double): List<Invoice> {
+        return invoiceService.getTotal(value)
     }
 }
