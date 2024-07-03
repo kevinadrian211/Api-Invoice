@@ -1,7 +1,15 @@
 package com.example.invoice.entity
 
-import jakarta.persistence.*
-import java.math.BigDecimal
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.Table
+
+
 
 @Entity
 @Table(name = "detail")
@@ -13,10 +21,10 @@ class Detail(
 
     var quantity: Int? = null,
 
-    var price: BigDecimal? = null,
+    var price: Double? = null,
 
     @Column(name = "subtotal", insertable = false, updatable = false)
-    var subtotal: BigDecimal? = null,
+    var subtotal: Double? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     var invoice: Invoice? = null,
