@@ -57,4 +57,16 @@ class DetailService {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error deleting detail", ex)
         }
     }
+
+    fun validateQuantity(quantity: Int?): Boolean? {
+        if (quantity == null) {
+            return null
+        }
+        return try {
+            val number = quantity.toInt()
+            number > 0
+        } catch (e: NumberFormatException) {
+            false
+        }
+    }
 }

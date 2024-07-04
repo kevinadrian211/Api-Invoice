@@ -57,4 +57,16 @@ class ProductService {
             throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error deleting product", ex)
         }
     }
+
+    fun validateStock(stock: Int?): Boolean? {
+        if (stock == null) {
+            return null
+        }
+        return try {
+            val number = stock.toInt()
+            number > 0
+        } catch (e: NumberFormatException) {
+            false
+        }
+    }
 }

@@ -58,4 +58,12 @@ class ClientService {
         }
     }
 
+    fun validateNui(nui: String?): Boolean?{
+        if (nui == null) {
+            return false
+        }
+        val regex = Regex("^\\d{10}$")
+        return regex.matches(nui)
+    }
+
 }

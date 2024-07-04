@@ -72,5 +72,13 @@ class InvoiceService {
         }
     }
 
+    fun validateCode (code: String?): Boolean? {
+        if (code == null) {
+            return false
+        }
+
+        val regex = Regex("\\d{3}-\\d{3}-\\d{9}")
+        return regex.matches(code)
+    }
 
 }
